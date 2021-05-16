@@ -5,5 +5,4 @@ public interface EncryptionService {
     String encoding(Long id);
 
     Long decoding(String url);
-
 }

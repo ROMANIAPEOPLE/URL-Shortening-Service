@@ -1,12 +1,12 @@
 package com.mss.task.service.encrypt;
 
-import static com.mss.task.common.constants.Constants.BASE62;
-import static com.mss.task.common.constants.Constants.BASE62_CHAR;
-
 import org.springframework.stereotype.Service;
 
 @Service
 public class Base62EncryptionService implements EncryptionService {
+
+    private static final String BASE62_CHAR = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    private static final int BASE62 = 62;
 
     @Override
     public String encoding(Long id) {
@@ -16,7 +16,6 @@ public class Base62EncryptionService implements EncryptionService {
             builder.append(BASE62_CHAR.charAt(idx));
             id /= BASE62;
         } while (id > 0);
-
         return builder.toString();
     }
 

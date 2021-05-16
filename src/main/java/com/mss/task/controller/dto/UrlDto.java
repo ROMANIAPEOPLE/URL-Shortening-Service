@@ -12,7 +12,7 @@ public class UrlDto {
     @NoArgsConstructor(access = AccessLevel.PROTECTED)
     public static class UrlConvertingRequest {
 
-        @URL
+        @URL(message = "http 또는 https를 포함한 올바른 형태의 URL을 입력해주세요.")
         private String originUrl;
 
         @Builder

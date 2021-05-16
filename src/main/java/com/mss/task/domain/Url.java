@@ -9,6 +9,7 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.validator.constraints.URL;
 
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -19,6 +20,7 @@ public class Url {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @URL(message = "http 또는 https를 포함한 올바른 형태의 URL을 입력해주세요.")
     private String originUrl;
 
     @Column(length = 8)
@@ -26,7 +28,7 @@ public class Url {
 
     private Long count;
 
-    public void countIncrease() {
+    public void increaseCount() {
         count++;
     }
 

@@ -52,7 +52,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
-  max-width: 30rem;
+  max-width: 40rem;
   margin: 1rem auto 0;
   padding: 0.7rem;
   background-color: #fff;
@@ -75,7 +75,7 @@ header {
 .error-text {
   display: none;
   margin-top: 1rem;
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: rgb(255, 86, 64);
   font-weight: bold;
   font-size: 1rem;
