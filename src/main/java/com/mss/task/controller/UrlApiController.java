@@ -2,7 +2,6 @@ package com.mss.task.controller;
 
 import com.mss.task.controller.dto.UrlDto.ShortUrlResponse;
 import com.mss.task.controller.dto.UrlDto.UrlConvertingRequest;
-import com.mss.task.exception.UrlNotFoundException;
 import com.mss.task.service.url.UrlService;
 import javax.validation.Valid;
 import lombok.RequiredArgsConstructor;

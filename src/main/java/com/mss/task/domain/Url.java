@@ -1,6 +1,5 @@
 package com.mss.task.domain;
 
-import com.mss.task.controller.dto.UrlDto.ShortUrlResponse;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
