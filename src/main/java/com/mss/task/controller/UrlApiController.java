@@ -18,8 +18,6 @@ public class UrlApiController {
     @PostMapping("/url-convert")
     public ShortUrlResponse urlConverting(@RequestBody @Valid UrlConvertingRequest requestDto) {
 
-        System.out.println(requestDto.getOriginUrl());
-
         return urlService.getConvertingUrl(requestDto.getOriginUrl());
     }
 }
