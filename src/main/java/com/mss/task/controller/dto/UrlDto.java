@@ -12,8 +12,22 @@ public class UrlDto {
     @NoArgsConstructor(access = AccessLevel.PROTECTED)
     public static class UrlConvertingRequest {
 
+        private static final int START_INDEX = 0;
+        private static String TRAILING_SLASH = "/";
+
         @URL(message = "http 또는 https를 포함한 올바른 형태의 URL을 입력해주세요.")
         private String originUrl;
+
+        public String unificationUrl() {
+            originUrl = originUrl.toLowerCase();
+            if (originUrl.endsWith(TRAILING_SLASH)) {
+                originUrl = originUrl.substring(START_INDEX, originUrl.length() - 1);
+            }
+            if (originUrl.startsWith("https")) {
+                return originUrl.replace("https", "http");
+            }
+            return originUrl;
+        }
 
         @Builder
         public UrlConvertingRequest(String originUrl) {
@@ -32,7 +46,6 @@ public class UrlDto {
         }
 
         public static ShortUrlResponse from(String shortUrl) {
-
             return ShortUrlResponse.builder()
                 .shortUrl(shortUrl)
                 .build();

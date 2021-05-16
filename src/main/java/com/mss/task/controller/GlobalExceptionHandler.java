@@ -14,14 +14,14 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(UrlNotFoundException.class)
     public ResponseEntity<String> handleUrlNotFoundException(UrlNotFoundException exception) {
-        log.error("URL 검색 과정에서 오류가 발생했습니다. 다시 시도해주세요.", exception);
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("URL 검색 과정에서 오류가 발생했습니다. 다시 시도해주세요.");
+        log.error("UrlNotFoundException: {}", exception);
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(exception.getMessage());
     }
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity handleException(Exception exception) {
-        log.error("예상치 못한 오류가 발생했습니다. 다시 시도해주세요.", exception);
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("예상치 못한 오류가 발생했습니다. 다시 시도해주세요.");
+        log.error("Exception: {}", exception);
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("예상치 못한 에러 발생");
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)

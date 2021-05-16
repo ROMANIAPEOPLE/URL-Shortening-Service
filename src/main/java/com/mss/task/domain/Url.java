@@ -1,5 +1,6 @@
 package com.mss.task.domain;
 
+import com.mss.task.controller.dto.UrlDto.ShortUrlResponse;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,6 +16,8 @@ import org.hibernate.validator.constraints.URL;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 public class Url {
+
+    private static final String URL_PREFIX = "http://localhost:8080/";
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -43,9 +46,15 @@ public class Url {
             .build();
     }
 
+    public String createShortUrl() {
+        return URL_PREFIX + this.shortUrl;
+    }
+
     @Builder
-    public Url(String originUrl, String shortUrl, Long count) {
+    public Url(Long id, String originUrl, String shortUrl, Long count) {
+        this.id = id;
         this.originUrl = originUrl;
+        this.shortUrl = shortUrl;
         this.count = count;
     }
 }
