@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>URL SHORTENTING SERVICE</title>
+    <link rel="stylesheet" href="./reset.css" />
+    <link rel="stylesheet" href="./style.css" />
+    <script src="./action.js" defer></script>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1 class="main-title">URL SHORTENTING SERVICE</h1>
+      </header>
+      <main>
+        <form action="#" method="post" class="form">
+          <h2 class="a11y-hidden">검색</h2>
+          <fieldset class="">
+            <legend class="a11y-hidden">검색폼</legend>
+            <div class="input-conatiner">
+              <label for="searchForm" class="a11y-hidden">URL 검색</label>
+              <input
+                type="text"
+                id="searchForm"
+                class="serach-input"
+                name="search"
+                placeholder="Enter URL"
+                required
+              />
+              <button type="submit" class="serach-button">CONVERT</button>
+            </div>
+          </fieldset>
+        </form>
+        <div class="text-container">
+          <p class="search-text"></p>
+          <button class="text-copy">copy</button>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>
