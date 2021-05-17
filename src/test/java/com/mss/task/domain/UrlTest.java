@@ -35,6 +35,6 @@ class UrlTest {
 
         String convertingUrl = url.createShortUrl();
 
-        assertThat(convertingUrl).isEqualTo(URL_PREFIX + createUrl().getShortUrl());
+        assertThat(convertingUrl).isEqualTo(URL_PREFIX + url.getShortUrl());
     }
 }
