@@ -38,7 +38,7 @@ class UrlViewControllerTest {
             .substring(convertingUrl.getShortUrl().lastIndexOf("/") + 1);
     }
 
-    @DisplayName(" get방식으로 '/' 요청시 url 변환 페이지로 이동한다.")
+    @DisplayName("get방식으로 '/' 요청시 url 변환 페이지로 이동한다.")
     @Test
     public void urlConvertingView() throws Exception {
         mockMvc.perform(get("/"))
@@ -60,6 +60,4 @@ class UrlViewControllerTest {
         resultActions.andExpect(status().is3xxRedirection())
             .andExpect(redirectedUrl(requestDto.getOriginUrl()));
     }
-
-
 }

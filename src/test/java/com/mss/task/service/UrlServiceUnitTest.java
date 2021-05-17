@@ -101,7 +101,6 @@ class UrlServiceUnitTest {
         assertThat(existingUrl.getCount()).isEqualTo(createExistingUrl().getCount() + 1);
         verify(urlRepository, atLeastOnce()).existsByOriginUrl(any(String.class));
         verify(urlRepository, atLeastOnce()).findByOriginUrl(any(String.class));
-
     }
 
     @Test
@@ -117,7 +116,5 @@ class UrlServiceUnitTest {
         verify(urlRepository, atLeastOnce()).existsByOriginUrl(any(String.class));
         verify(urlRepository, atLeastOnce()).save(any(Url.class));
         verify(urlRepository, atLeastOnce()).deleteById(any(Long.class));
-
     }
-
 }
