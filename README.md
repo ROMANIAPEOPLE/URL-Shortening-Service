@@ -28,7 +28,7 @@
 
 ### ✍️ URL Shortening Key Max Length
 
-[참고자료](https://domainnamestat.com/statistics/tld/others)에 따르면 2021년 기준 전 세계에 등록된 도메인의 개수는 약 3억 개로, Base62 알고리즘 사용 시 **218340105584895개**까지 8자리로 Shortening Key를 유지할 수 있습니다. 8자리를 초과한 경우 `OutOfUrlMemoryException`이 발생합니다. 
+[참고자료](https://domainnamestat.com/statistics/tld/others)에 따르면 2021년 기준 전 세계에 등록된 도메인의 개수는 약 5억 개 정도로, Base62 알고리즘 사용 시 **218340105584895개**까지 8자리로 Shortening Key를 유지할 수 있습니다. 8자리를 초과한 경우 `OutOfUrlMemoryException`이 발생합니다. 
 
 ---
 
