@@ -38,15 +38,15 @@ public class Url {
         this.shortUrl = shortUrl;
     }
 
+    public String createShortUrl() {
+        return URL_PREFIX + this.shortUrl;
+    }
+
     public static Url from(String originUrl) {
         return Url.builder()
             .originUrl(originUrl)
             .count(1L)
             .build();
-    }
-
-    public String createShortUrl() {
-        return URL_PREFIX + this.shortUrl;
     }
 
     @Builder

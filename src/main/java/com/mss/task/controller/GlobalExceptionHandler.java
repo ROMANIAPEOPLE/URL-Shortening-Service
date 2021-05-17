@@ -40,5 +40,4 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
             .body("현재 URL 단축 서비스를 이용하실 수 없습니다. 관리자에게 문의해주세요.");
     }
-
 }

@@ -40,15 +40,15 @@ public class UrlDto {
 
         private String shortUrl;
 
-        @Builder
-        public ShortUrlResponse(String shortUrl) {
-            this.shortUrl = shortUrl;
-        }
-
         public static ShortUrlResponse from(String shortUrl) {
             return ShortUrlResponse.builder()
                 .shortUrl(shortUrl)
                 .build();
+        }
+
+        @Builder
+        public ShortUrlResponse(String shortUrl) {
+            this.shortUrl = shortUrl;
         }
     }
 }
