@@ -18,19 +18,19 @@
 
 ##### 5. h2 database
 
-
+---
 
 ### ✍️ Base62 vs Base64
 
 `Base64` 알고리즘 62개의 숫자와 알파벳에 추가적으로 **+, /**을 포함한 특수문자가 포함됩니다. URL에 특수문자가 포함된다면 추가적인 인코딩 작업이 필요하기 때문에 특수문자를 사용하지 않고 총 62개의 숫자와 문자로 이루어진 Base62 알고리즘을 사용합니다.
 
-
+---
 
 ### ✍️ URL Shortening Key Max Length
 
 [참고자료](https://domainnamestat.com/statistics/tld/others)에 따르면 2021년 기준 전 세계에 등록된 도메인의 개수는 약 3억 개로, Base62 알고리즘 사용 시 **218340105584895개**까지 8자리로 Shortening Key를 유지할 수 있습니다. 8자리를 초과한 경우 `OutOfUrlMemoryException`이 발생합니다. 
 
-
+---
 
 ### ✍️ URL INTEGRATION RULES
 
@@ -40,7 +40,7 @@
 
 ##### 3. 대/소문자를 구분하지 않고 모두 소문자로 처리합니다.
 
-
+---
 
 ### ✍️URL INPUT RULES
 
@@ -50,7 +50,7 @@
 
 ##### (ex : https://www.xxxxcom , www.xxx.com)
 
-
+---
 
 ### ✍️TEST
 
@@ -62,13 +62,13 @@
 
 ##### 4. domain : Unit Test 
 
-
+---
 
 ### ✍️  View
 
-![view](C:\Users\jungk\Desktop\view.PNG)
+![view](https://user-images.githubusercontent.com/39195377/118530212-5c2b4000-b77f-11eb-96c8-b801c59185db.PNG)
+
 
 ---
 
-### 
 
