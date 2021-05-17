@@ -1,5 +1,6 @@
 package com.mss.task.controller;
 
+import com.mss.task.exception.OutOfUrlMemoryException;
 import com.mss.task.exception.UrlNotFoundException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -25,9 +26,19 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<String> handleMethodArgumentNotValidException(MethodArgumentNotValidException exception) {
-        String defaultMessage = exception.getBindingResult().getAllErrors().get(0).getDefaultMessage();
-        log.error("http:// 또는 https://를 포함한 URL을 입력해주세요.", exception);
+    public ResponseEntity<String> handleMethodArgumentNotValidException(
+        MethodArgumentNotValidException exception) {
+        String defaultMessage = exception.getBindingResult().getAllErrors().get(0)
+            .getDefaultMessage();
+        log.debug("http:// 또는 https://를 포함한 URL을 입력해주세요.", exception);
         return ResponseEntity.badRequest().body(defaultMessage);
     }
+
+    @ExceptionHandler(OutOfUrlMemoryException.class)
+    public ResponseEntity handleOutOfUrlMemoryException(OutOfUrlMemoryException exception) {
+        log.error("OutOfUrlMemoryException: {}", exception);
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+            .body("현재 URL 단축 서비스를 이용하실 수 없습니다. 관리자에게 문의해주세요.");
+    }
+
 }

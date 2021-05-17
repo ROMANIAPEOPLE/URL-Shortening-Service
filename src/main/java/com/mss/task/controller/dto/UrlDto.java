@@ -23,8 +23,8 @@ public class UrlDto {
             if (originUrl.endsWith(TRAILING_SLASH)) {
                 originUrl = originUrl.substring(START_INDEX, originUrl.length() - 1);
             }
-            if (originUrl.startsWith("https")) {
-                return originUrl.replace("https", "http");
+            if (originUrl.startsWith("https://")) {
+                return originUrl.replace("https://", "http://");
             }
             return originUrl;
         }
