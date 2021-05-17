@@ -44,7 +44,7 @@
 
 ### ✍️URL INPUT RULES
 
-##### 1. http:// 또는 https://를 포함한 형태의 URL을 입력합니다.
+##### 1. http:// 또는 https:// 를 포함한 형태의 URL을 입력합니다.
 
 ##### 2. 올바른 형태의 URL을 입력하지 않으면 `MethodArgumentNotValidException`이 발생합니다.
 
