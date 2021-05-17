@@ -23,7 +23,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 @ExtendWith(MockitoExtension.class)
-class UrlServiceTest {
+class UrlServiceUnitTest {
 
     private static final String URL_PREFIX = "http://localhost:8080/";
     private static final Long MAX_ID = 218340105584895L;

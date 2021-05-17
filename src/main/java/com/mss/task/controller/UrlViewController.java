@@ -17,7 +17,7 @@ public class UrlViewController {
         return "index";
     }
 
-    @GetMapping("{shortUrl:[0-9a-zA-Z]+}")
+    @GetMapping("{shortUrl:[0-9a-zA-Z]}")
     public String redirectUrl(@PathVariable String shortUrl) {
         return urlService.redirectToOriginUrl(shortUrl);
     }

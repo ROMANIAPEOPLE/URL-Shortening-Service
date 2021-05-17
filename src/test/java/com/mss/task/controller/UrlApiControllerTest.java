@@ -1,32 +1,41 @@
 package com.mss.task.controller;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.BDDMockito.given;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.mss.task.controller.dto.UrlDto.ShortUrlResponse;
 import com.mss.task.controller.dto.UrlDto.UrlConvertingRequest;
+import com.mss.task.service.url.UrlService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 
 @ExtendWith(SpringExtension.class)
-@SpringBootTest
+@WebMvcTest(UrlApiController.class)
 @AutoConfigureMockMvc
-class UrlApiControllerIntegrateTest {
+class UrlApiControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
+
+    @MockBean
+    private UrlService urlService;
 
     @Autowired
     private ObjectMapper objectMapper;
@@ -43,10 +52,18 @@ class UrlApiControllerIntegrateTest {
             .build();
     }
 
+    private ShortUrlResponse createResponseDto() {
+        return ShortUrlResponse.builder()
+            .shortUrl("http://localhost:8080/B")
+            .build();
+    }
+
     @DisplayName("올바른 형태의 URL 요청시 정상적으로 Short URL을 반환한다.")
     @Test
     void successConversionUrl() throws Exception {
         UrlConvertingRequest requestDto = createRequestDto();
+        ShortUrlResponse shortUrlResponse = createResponseDto();
+        given(urlService.getConvertingUrl(any())).willReturn(shortUrlResponse);
 
         ResultActions resultActions = mockMvc.perform(post("/url-convert")
             .contentType(MediaType.APPLICATION_JSON)
@@ -54,7 +71,7 @@ class UrlApiControllerIntegrateTest {
             .andDo(print());
 
         resultActions
-            .andExpect(jsonPath("$.shortUrl").value("http://localhost:8080/B"))
+            .andExpect(jsonPath("$.shortUrl").value(shortUrlResponse.getShortUrl()))
             .andExpect(status().isOk());
     }
 
@@ -72,4 +89,6 @@ class UrlApiControllerIntegrateTest {
             .andExpect(status().isBadRequest())
             .andExpect(content().string("http 또는 https를 포함한 올바른 형태의 URL을 입력해주세요."));
     }
+
+
 }
