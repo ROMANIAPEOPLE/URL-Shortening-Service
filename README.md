@@ -1,4 +1,4 @@
-### 💻 BUILD PROJECT BY LINUX (서버 환경 : centos-7.3-64)
+### 💻 BUILD PROJECT BY LINUX ( 빌드 테스트 환경 : centos-7.3-64)
 
 #### 1. JDK 1.8 설치 여부 확인
 
