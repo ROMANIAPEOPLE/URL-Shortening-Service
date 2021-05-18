@@ -40,7 +40,7 @@
 vim 편집기를 열어 아래와 같이 환경변수를 입력&수정합니다.
 
 ```bash
-export /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.292.b10-1.el7_9.x86_64
+export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.292.b10-1.el7_9.x86_64
 ```
 
 ![환경변수 export](https://user-images.githubusercontent.com/39195377/118670557-aff66180-b831-11eb-9f99-055c3902d52b.PNG)
