@@ -138,7 +138,7 @@ http://localhost:8080/
 
 ---
 
-### etc.
+### 오류 & 로그 확인
 
 Web server failed to start. Port 8080 was already in use 에러 발생시, 사용중인 8080 port의 PID를 찾아서 종료 후 다시 실행합니다.
 
@@ -155,7 +155,7 @@ lsof -i tcp:8080
 kill -15 위에서 찾은 PID
 ```
 
-실행중인 프로젝트의 log 정보는 아래 명령어를 통해 확인이 가능합니다.
+**실행중인 프로젝트의 log 정보는 아래 명령어를 통해 확인이 가능합니다.**
 ```bash
 # cat nohup.out
 ```
