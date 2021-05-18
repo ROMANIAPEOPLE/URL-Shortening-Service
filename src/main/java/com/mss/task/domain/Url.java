@@ -26,7 +26,7 @@ public class Url {
     private String originUrl;
 
     @Column(length = 8)
-    private String shortUrl;
+    private String shortKey;
 
     private Long count;
 
@@ -34,12 +34,12 @@ public class Url {
         count++;
     }
 
-    public void setShortUrl(String shortUrl) {
-        this.shortUrl = shortUrl;
+    public void setShortKey(String shortKey) {
+        this.shortKey = shortKey;
     }
 
     public String createShortUrl() {
-        return URL_PREFIX + this.shortUrl;
+        return URL_PREFIX + this.shortKey;
     }
 
     public static Url from(String originUrl) {
@@ -50,10 +50,10 @@ public class Url {
     }
 
     @Builder
-    public Url(Long id, String originUrl, String shortUrl, Long count) {
+    public Url(Long id, String originUrl, String shortKey, Long count) {
         this.id = id;
         this.originUrl = originUrl;
-        this.shortUrl = shortUrl;
+        this.shortKey = shortKey;
         this.count = count;
     }
 }

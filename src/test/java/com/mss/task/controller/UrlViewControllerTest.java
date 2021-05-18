@@ -41,9 +41,9 @@ class UrlViewControllerTest {
     void redirectOriginUrl() throws Exception {
         UrlConvertingRequest requestDto = createRequestDto();
         ShortUrlResponse convertingUrl = urlService.getConvertingUrl(requestDto);
-        String shortUrl = getConvertingUrl(convertingUrl);
+        String shortKey = getShortKey(convertingUrl);
 
-        ResultActions resultActions = mockMvc.perform(get("/{shortUrl}", shortUrl))
+        ResultActions resultActions = mockMvc.perform(get("/{shortUrl}", shortKey))
             .andDo(print());
 
         resultActions.andExpect(status().is3xxRedirection())
@@ -56,7 +56,7 @@ class UrlViewControllerTest {
             .build();
     }
 
-    private String getConvertingUrl(ShortUrlResponse convertingUrl) {
+    private String getShortKey(ShortUrlResponse convertingUrl) {
         return convertingUrl.getShortUrl()
             .substring(convertingUrl.getShortUrl().lastIndexOf("/") + 1);
     }

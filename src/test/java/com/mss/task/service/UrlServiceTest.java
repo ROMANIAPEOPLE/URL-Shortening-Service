@@ -33,7 +33,7 @@ public class UrlServiceTest {
 
         ShortUrlResponse convertingUrl = urlService.getConvertingUrl(requestDto);
 
-        assertThat(convertingUrl.getShortUrl()).isEqualTo(URL_PREFIX + existingUrl.getShortUrl());
+        assertThat(convertingUrl.getShortUrl()).isEqualTo(URL_PREFIX + existingUrl.getShortKey());
     }
 
     @Test
@@ -43,7 +43,7 @@ public class UrlServiceTest {
         Url existingUrl = urlRepository.save(createExistingUrl());
 
         ShortUrlResponse convertingUrl = urlService.getConvertingUrl(requestDto);
-        String expected = URL_PREFIX + existingUrl.getShortUrl();
+        String expected = URL_PREFIX + existingUrl.getShortKey();
 
         assertThat(convertingUrl.getShortUrl()).isEqualTo(expected);
         assertThat(existingUrl.getCount()).isEqualTo(2L);
@@ -56,7 +56,7 @@ public class UrlServiceTest {
         UrlConvertingRequest requestDto = createRequestDtoIncludeHttps();
 
         ShortUrlResponse convertingUrl = urlService.getConvertingUrl(requestDto);
-        String expected = URL_PREFIX + existingUrl.getShortUrl();
+        String expected = URL_PREFIX + existingUrl.getShortKey();
 
         assertThat(convertingUrl.getShortUrl()).isEqualTo(expected);
         assertThat(existingUrl.getCount()).isEqualTo(2);
@@ -69,7 +69,7 @@ public class UrlServiceTest {
         UrlConvertingRequest requestDto = createRequestDtoIncludeTrailingSlash();
 
         ShortUrlResponse convertingUrl = urlService.getConvertingUrl(requestDto);
-        String expected = URL_PREFIX + existingUrl.getShortUrl();
+        String expected = URL_PREFIX + existingUrl.getShortKey();
 
         assertThat(convertingUrl.getShortUrl()).isEqualTo(expected);
         assertThat(existingUrl.getCount()).isEqualTo(2);
@@ -82,7 +82,7 @@ public class UrlServiceTest {
         UrlConvertingRequest requestDto = createRequestDtoIncludeUppercaseUrl();
 
         ShortUrlResponse convertingUrl = urlService.getConvertingUrl(requestDto);
-        String expected = URL_PREFIX + existingUrl.getShortUrl();
+        String expected = URL_PREFIX + existingUrl.getShortKey();
 
         assertThat(convertingUrl.getShortUrl()).isEqualTo(expected);
         assertThat(existingUrl.getCount()).isEqualTo(2);
@@ -117,7 +117,7 @@ public class UrlServiceTest {
             .id(1L)
             .count(1L)
             .originUrl("http://store.musinsa.com/app/goods/1842348")
-            .shortUrl("ABCD")
+            .shortKey("ABCD")
             .build();
     }
 }

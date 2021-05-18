@@ -17,7 +17,7 @@ class UrlTest {
         url = Url.builder()
             .id(1L)
             .originUrl("http://store.musinsa.com/app/goods/1842348")
-            .shortUrl("ABCD")
+            .shortKey("ABCD")
             .count(1L)
             .build();
     }
@@ -35,6 +35,6 @@ class UrlTest {
     void createShortUrl() {
         String convertingUrl = url.createShortUrl();
 
-        assertThat(convertingUrl).isEqualTo(URL_PREFIX + url.getShortUrl());
+        assertThat(convertingUrl).isEqualTo(URL_PREFIX + url.getShortKey());
     }
 }

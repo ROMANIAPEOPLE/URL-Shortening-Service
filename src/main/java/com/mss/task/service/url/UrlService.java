@@ -21,10 +21,10 @@ public class UrlService {
     private final UrlRepository urlRepository;
     private final EncryptionService base62EncryptionService;
 
-    public String redirectToOriginUrl(String shortUrl) {
-        Long id = base62EncryptionService.decoding(shortUrl);
+    public String redirectToOriginUrl(String shortKey) {
+        Long id = base62EncryptionService.decoding(shortKey);
         Url url = urlRepository.findById(id)
-            .orElseThrow(() -> new UrlNotFoundException(shortUrl));
+            .orElseThrow(() -> new UrlNotFoundException(shortKey));
         return REDIRECT + url.getOriginUrl();
     }
 
@@ -40,8 +40,8 @@ public class UrlService {
     private ShortUrlResponse conversionUrl(String originUrl) {
         Url saveUrl = urlRepository.save(Url.from(originUrl));
         validUrlMemory(saveUrl.getId());
-        String shortUrl = base62EncryptionService.encoding(saveUrl.getId());
-        saveUrl.setShortUrl(shortUrl);
+        String shortKey = base62EncryptionService.encoding(saveUrl.getId());
+        saveUrl.setShortKey(shortKey);
         return ShortUrlResponse.from(saveUrl.createShortUrl());
     }
 

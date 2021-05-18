@@ -24,10 +24,10 @@ class Base62EncryptionServiceTest {
     @DisplayName("임의의 String 값으로 디코딩이 정상적으로 동작하는지 확인한다.")
     @Test
     void urlDecoding() {
-        String shortUrl = "ABCD";
+        String shortKey = "ABCD";
 
-        Long id = base62EncryptionService.decoding(shortUrl);
+        Long id = base62EncryptionService.decoding(shortKey);
 
-        assertThat(shortUrl).isEqualTo(base62EncryptionService.encoding(id));
+        assertThat(shortKey).isEqualTo(base62EncryptionService.encoding(id));
     }
 }
