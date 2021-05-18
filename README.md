@@ -1,4 +1,4 @@
-### 💻 BUILD PROJECT BY LINUX (서버 환경 : centos-7.3-64)
+### 💻 BUILD PROJECT BY LINUX ( 빌드 테스트 환경 : centos-7.3-64)
 
 #### 1. JDK 1.8 설치 여부 확인
 
@@ -15,6 +15,42 @@
 ```bash
 # sudo yum install java-1.8.0-openjdk-devel
 ```
+-----
+
+아래 명령어를 통해 환경변수 설정을 확인합니다.
+
+```bash
+# echo $JAVA_HOME
+```
+
+![환경변수](https://user-images.githubusercontent.com/39195377/118670553-aff66180-b831-11eb-934a-7dc5dd9ffb55.PNG)
+
+만약 환경변수 설정이 되어있지 않다면 아래 명령어들로 환경변수 설정을 완료합니다.
+
+```bash
+# readlink -f /usr/bin/javac
+```
+
+![환경변수 설정](https://user-images.githubusercontent.com/39195377/118670552-aec53480-b831-11eb-88cb-149ba2d89bf2.PNG)
+
+```bash
+# vim /etc/profile
+```
+
+vim 편집기를 열어 아래와 같이 환경변수를 입력&수정합니다.
+
+```bash
+export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.292.b10-1.el7_9.x86_64
+```
+
+![환경변수 export](https://user-images.githubusercontent.com/39195377/118670557-aff66180-b831-11eb-9f99-055c3902d52b.PNG)
+
+마지막으로 아래 명령어를 입력해 변경한 환경변수를 적용합니다.
+
+```bash
+# source /etc/profile
+```
+
 
 
 
@@ -41,7 +77,7 @@
 아래 명령어를 차례대로 입력해 폴더를 생성하고, 생성한 폴더로 이동합니다.
 
 ```bash
-# mkdir exam_mss && cd ~/exam_mss
+# mkdir ~/exam_mss && cd ~/exam_mss
 ```
 
 해당 프로젝트에 대한 **git clone**을 진행합니다.
@@ -80,7 +116,7 @@ build가 완료되면 아래와 같이 출력됩니다.
 
 ![빌드석섹스](https://user-images.githubusercontent.com/39195377/118615738-fd57dc00-b7fb-11eb-82e9-b34af9ed42c6.PNG)
 
-**build/libs** 폴더로 이동해 생성된 **jar 파일을 실행**합니다.
+**build/libs** 폴더로 이동해 생성된 **jar 파일을 확인**합니다.
 
 ```bash
 cd build/libs
@@ -88,8 +124,10 @@ cd build/libs
 
 ![라스트 ls-al](https://user-images.githubusercontent.com/39195377/118615733-fc26af00-b7fb-11eb-8d71-bdc34c8201f4.PNG)
 
+백그라운드로 jar 파일을 실행합니다.
+
 ```bash
-java -jar task-0.0.1-SNAPSHOT.jar
+nohup java -jar task-0.0.1-SNAPSHOT.jar &
 ```
 
 ##### 다음 주소로 접속해 URL Shortening Servcie를 이용합니다.
@@ -100,24 +138,36 @@ http://localhost:8080/
 
 ---
 
-### etc.
+### 오류 & 로그 확인
 
-만약 정상적으로 Springboot project가 실행되었는데 http://localhost:8080/ 접속이 안된다면 다음 명령어를 통해 실행중인 tomcat의 PID를 찾아 강제 종료 후 다시 연결해야 합니다.
+Web server failed to start. Port 8080 was already in use 에러 발생시, 사용중인 8080 port의 PID를 찾아서 종료 후 다시 실행합니다.
 
-**실행중인 tomcat 찾기**
 
-```bash
-ps -ef | grep tomcat
-```
-
-##### tomcat 강제 종료
+**실행중인 8080PORT PID 찾기**
 
 ```bash
-kill -15 위에서 찾은 tomcat PID
+lsof -i tcp:8080
 ```
+
+##### 강제 종료
+
+```bash
+kill -15 위에서 찾은 PID
+```
+
+**실행중인 프로젝트의 log 정보는 아래 명령어를 통해 확인이 가능합니다.**
+```bash
+# cat nohup.out
+```
+
 
 ---
-# PROJECT INFO
+
+<details>
+  
+<summary> PROJECT INFO (Click!) </summary>
+  
+<div markdown="1">
 
 ### ✍️TECHNOLOGY 
 
@@ -194,4 +244,6 @@ kill -15 위에서 찾은 tomcat PID
 
 ---
 
+</div>
+</details>
 
