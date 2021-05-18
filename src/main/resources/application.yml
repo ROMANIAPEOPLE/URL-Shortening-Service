@@ -17,6 +17,3 @@ spring :
     properties:
       hibernate:
         format-sql: true
-#  h2:
-#    console:
-#      enabled: true
