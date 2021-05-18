@@ -162,7 +162,12 @@ kill -15 위에서 찾은 PID
 
 
 ---
+
+<details>
+  
 # PROJECT INFO
+  
+<div markdown="1">
 
 ### ✍️TECHNOLOGY 
 
@@ -239,4 +244,6 @@ kill -15 위에서 찾은 PID
 
 ---
 
+</div>
+</details>
 
