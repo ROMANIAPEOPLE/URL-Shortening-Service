@@ -140,7 +140,8 @@ http://localhost:8080/
 
 ### etc.
 
-만약 정상적으로 Springboot project가 실행되었는데 http://localhost:8080/ 접속이 안된다면 다음 명령어를 통해 실행중인 8080 PORT의 PID를 찾아 강제 종료 후 다시 실행해야 합니다.
+Web server failed to start. Port 8080 was already in use 에러 발생시, 사용중인 8080 port의 PID를 찾아서 종료 후 다시 실행합니다.
+
 
 **실행중인 8080PORT PID 찾기**
 
