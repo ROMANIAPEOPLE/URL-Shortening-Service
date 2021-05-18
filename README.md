@@ -1,8 +1,104 @@
 ##  **URL Shortening Service**
 
-### 💻 BUILD PROJECT BY LINUX
+### 💻 BUILD PROJECT BY LINUX (서버 환경 : centos-7.3-64)
+
+#### 1. JDK 1.8 설치 여부 확인
+
+```bash
+# java -version
+```
+
+**jdk 1.8**이 설치되어 있다면 아래와 같이 출력됩니다.
+
+![jdk정상설ㅊ](https://user-images.githubusercontent.com/39195377/118615740-fd57dc00-b7fb-11eb-819e-e8e8340d24b3.PNG)
+
+만약 **jdk1.8**이 설치되어 있지 않다면 다음 명령어로 설치합니다.
+
+```bash
+# sudo yum install java-1.8.0-openjdk-devel
+```
 
 
+
+#### 2. git 설치 여부 확인
+
+```bash
+# git --version
+```
+
+**git**이 정상적으로 설치되어 있다면 아래와 같이 출력됩니다.
+
+![깃설치여부](https://user-images.githubusercontent.com/39195377/118615744-fdf07280-b7fb-11eb-90b1-f8689069d60f.PNG)
+
+만약 **git**이 설치되어 있지 않다면 다음 명령어로 설치합니다.
+
+```bash
+# sudo yum install git
+```
+
+
+
+#### 3. git clone
+
+아래 명령어를 차례대로 입력해 폴더를 생성하고, 생성한 폴더로 이동합니다.
+
+```bash
+# mkdir exam_mss && cd ~/exam_mss
+```
+
+해당 프로젝트에 대한 **git clone**을 진행합니다.
+
+```bash
+# git clone https://github.com/ROMANIAPEOPLE/URL-Shortening-Service.git
+```
+
+아래 명령어를 차례대로 입력해 `URL-Shortening-Service` 폴더가 생성됐는지 확인하고 해당 폴더로 이동합니다.
+
+```bash
+ls -al
+```
+
+![ls-al](https://user-images.githubusercontent.com/39195377/118615742-fdf07280-b7fb-11eb-8532-7125041c0d5e.PNG)
+
+```bash
+cd URL-Shortening-Service
+```
+
+#### 4. gradle build & project start
+
+**Permission denied**방지를 위해 아래 명령어를 입력합니다. (gradlew 실행 권한 부여)
+
+```bash
+chmod +x ./gradlew
+```
+
+아래 명령어를 입력해서 build를 진행합니다.
+
+```bash
+./gradlew build
+```
+
+build가 완료되면 아래와 같이 출력됩니다.
+
+![빌드석섹스](https://user-images.githubusercontent.com/39195377/118615738-fd57dc00-b7fb-11eb-82e9-b34af9ed42c6.PNG)
+
+**build/libs** 폴더로 이동해 생성된 **jar 파일을 실행**합니다.
+
+```bash
+cd build/libs
+```
+
+![라스트 ls-al](https://user-images.githubusercontent.com/39195377/118615733-fc26af00-b7fb-11eb-8d71-bdc34c8201f4.PNG)
+
+```bash
+java -jar task-0.0.1-SNAPSHOT.jar
+```
+
+##### 다음 주소로 접속해 URL Shortening Servcie를 이용합니다.
+
+```http
+http://localhost:8080/
+```
 
 ---
 
