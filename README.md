@@ -98,6 +98,23 @@ java -jar task-0.0.1-SNAPSHOT.jar
 http://localhost:8080/
 ```
 
+---
+
+### etc.
+
+만약 정상적으로 Springboot project가 실행되었는데 http://localhost:8080/ 접속이 안된다면 다음 명령어를 통해 실행중인 tomcat의 PID를 찾아 강제 종료 후 다시 연결해야 합니다.
+
+**실행중인 tomcat 찾기**
+
+```bash
+ps -ef | grep tomcat
+```
+
+##### tomcat 강제 종료
+
+```bash
+kill -15 위에서 찾은 tomcat PID
+```
 
 ---
 # PROJECT INFO
