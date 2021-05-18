@@ -77,7 +77,7 @@ export /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.292.b10-1.el7_9.x86_64
 아래 명령어를 차례대로 입력해 폴더를 생성하고, 생성한 폴더로 이동합니다.
 
 ```bash
-# mkdir exam_mss && cd ~/exam_mss
+# mkdir ~/exam_mss && cd ~/exam_mss
 ```
 
 해당 프로젝트에 대한 **git clone**을 진행합니다.
@@ -116,7 +116,7 @@ build가 완료되면 아래와 같이 출력됩니다.
 
 ![빌드석섹스](https://user-images.githubusercontent.com/39195377/118615738-fd57dc00-b7fb-11eb-82e9-b34af9ed42c6.PNG)
 
-**build/libs** 폴더로 이동해 생성된 **jar 파일을 실행**합니다.
+**build/libs** 폴더로 이동해 생성된 **jar 파일을 확인**합니다.
 
 ```bash
 cd build/libs
@@ -124,8 +124,10 @@ cd build/libs
 
 ![라스트 ls-al](https://user-images.githubusercontent.com/39195377/118615733-fc26af00-b7fb-11eb-8d71-bdc34c8201f4.PNG)
 
+백그라운드로 jar 파일을 실행합니다.
+
 ```bash
-java -jar task-0.0.1-SNAPSHOT.jar
+nohup java -jar task-0.0.1-SNAPSHOT.jar &
 ```
 
 ##### 다음 주소로 접속해 URL Shortening Servcie를 이용합니다.
@@ -138,19 +140,25 @@ http://localhost:8080/
 
 ### etc.
 
-만약 정상적으로 Springboot project가 실행되었는데 http://localhost:8080/ 접속이 안된다면 다음 명령어를 통해 실행중인 tomcat의 PID를 찾아 강제 종료 후 다시 연결해야 합니다.
+만약 정상적으로 Springboot project가 실행되었는데 http://localhost:8080/ 접속이 안된다면 다음 명령어를 통해 실행중인 8080 PORT의 PID를 찾아 강제 종료 후 다시 실행해야 합니다.
 
-**실행중인 tomcat 찾기**
-
-```bash
-ps -ef | grep tomcat
-```
-
-##### tomcat 강제 종료
+**실행중인 8080PORT PID 찾기**
 
 ```bash
-kill -15 위에서 찾은 tomcat PID
+lsof -i tcp:8080
 ```
+
+##### 강제 종료
+
+```bash
+kill -15 위에서 찾은 PID
+```
+
+실행중인 프로젝트의 log 정보는 아래 명령어를 통해 확인이 가능합니다.
+```bash
+# cat nohup.out
+```
+
 
 ---
 # PROJECT INFO
