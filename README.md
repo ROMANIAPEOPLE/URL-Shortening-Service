@@ -165,7 +165,7 @@ kill -15 위에서 찾은 PID
 
 <details>
   
-# PROJECT INFO
+<summary> # PROJECT INFO </summary>
   
 <div markdown="1">
 
