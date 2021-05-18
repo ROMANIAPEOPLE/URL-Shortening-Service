@@ -27,20 +27,9 @@ class UrlViewControllerTest {
     @Autowired
     private UrlService urlService;
 
-    private UrlConvertingRequest createRequestDto() {
-        return UrlConvertingRequest.builder()
-            .originUrl("http://store.musinsa.com/app/goods/1842348")
-            .build();
-    }
-
-    private String getConvertingUrl(ShortUrlResponse convertingUrl) {
-        return convertingUrl.getShortUrl()
-            .substring(convertingUrl.getShortUrl().lastIndexOf("/") + 1);
-    }
-
     @DisplayName("get방식으로 '/' 요청시 url 변환 페이지로 이동한다.")
     @Test
-    public void urlConvertingView() throws Exception {
+    void urlConvertingView() throws Exception {
         mockMvc.perform(get("/"))
             .andDo(print())
             .andExpect(status().isOk())
@@ -59,5 +48,16 @@ class UrlViewControllerTest {
 
         resultActions.andExpect(status().is3xxRedirection())
             .andExpect(redirectedUrl(requestDto.getOriginUrl()));
+    }
+
+    private UrlConvertingRequest createRequestDto() {
+        return UrlConvertingRequest.builder()
+            .originUrl("http://store.musinsa.com/app/goods/1842348")
+            .build();
+    }
+
+    private String getConvertingUrl(ShortUrlResponse convertingUrl) {
+        return convertingUrl.getShortUrl()
+            .substring(convertingUrl.getShortUrl().lastIndexOf("/") + 1);
     }
 }

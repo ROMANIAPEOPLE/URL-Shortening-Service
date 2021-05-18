@@ -32,10 +32,9 @@ class UrlDtoTest {
         UrlConvertingRequest requestDto = createRequestDtoIncludeHttps();
 
         String originUrl = requestDto.unificationUrl();
+        String expected = "http://store.musinsa.com/app/goods/913402";
 
-        assertThat(originUrl)
-            .isEqualTo(
-                createRequestDtoIncludeHttps().getOriginUrl().replace("https://", "http://"));
+        assertThat(originUrl).isEqualTo(expected);
     }
 
     @DisplayName("URL의 마지막에 TRAILING_SLASH가 존재하면 TRAILING_SLASH를 제거한다.")
@@ -44,10 +43,9 @@ class UrlDtoTest {
         UrlConvertingRequest requestDto = createRequestDtoIncludeTrailingSlash();
 
         String originUrl = requestDto.unificationUrl();
+        String expected = "http://store.musinsa.com/app/goods/913402";
 
-        assertThat(originUrl).isEqualTo(
-            requestDto.getOriginUrl()
-                .substring(0, createRequestDtoIncludeTrailingSlash().getOriginUrl().length() - 1));
+        assertThat(originUrl).isEqualTo(expected);
     }
 
     @DisplayName("대문자로 입력된 URL은 소문자로 URL로 변환한다.")
@@ -56,7 +54,8 @@ class UrlDtoTest {
         UrlConvertingRequest requestDto = createRequestDtoInUppercase();
 
         String originUrl = requestDto.unificationUrl();
+        String expected = "http://store.musinsa.com/app/goods/913402";
 
-        assertThat(originUrl).isEqualTo(createRequestDtoInUppercase().getOriginUrl().toLowerCase());
+        assertThat(originUrl).isEqualTo(expected);
     }
 }

@@ -5,8 +5,10 @@ import com.mss.task.controller.dto.UrlDto.UrlConvertingRequest;
 import com.mss.task.service.url.UrlService;
 import javax.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -16,6 +18,7 @@ public class UrlApiController {
     private final UrlService urlService;
 
     @PostMapping("/url-convert")
+    @ResponseStatus(HttpStatus.CREATED)
     public ShortUrlResponse urlConverting(@RequestBody @Valid UrlConvertingRequest requestDto) {
         return urlService.getConvertingUrl(requestDto);
     }

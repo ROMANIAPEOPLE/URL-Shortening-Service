@@ -38,6 +38,38 @@ class UrlApiControllerTest {
     @Autowired
     private ObjectMapper objectMapper;
 
+    @DisplayName("올바른 형태의 URL 요청시 정상적으로 Short URL을 반환한다.")
+    @Test
+    void successConversionUrl() throws Exception {
+        UrlConvertingRequest requestDto = createRequestDto();
+        ShortUrlResponse shortUrlResponse = createResponseDto();
+        given(urlService.getConvertingUrl(any())).willReturn(shortUrlResponse);
+
+        ResultActions resultActions = mockMvc.perform(post("/url-convert")
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(objectMapper.writeValueAsString(requestDto)))
+            .andDo(print());
+
+        resultActions
+            .andExpect(jsonPath("$.shortUrl").value(shortUrlResponse.getShortUrl()))
+            .andExpect(status().isCreated());
+    }
+
+    @DisplayName("잘못된 형태의 URL 요청시 400코드와 에러 메시지를 반환한다.")
+    @Test
+    void failureConversionUrl() throws Exception {
+        UrlConvertingRequest requestDto = createRequestDtoInvalidUrl();
+
+        ResultActions resultActions = mockMvc.perform(post("/url-convert")
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(objectMapper.writeValueAsString(requestDto)))
+            .andDo(print());
+
+        resultActions
+            .andExpect(status().isBadRequest())
+            .andExpect(content().string("http 또는 https를 포함한 올바른 형태의 URL을 입력해주세요."));
+    }
+
     private UrlConvertingRequest createRequestDto() {
         return UrlConvertingRequest.builder()
             .originUrl("http://store.musinsa.com/app/goods/1842348")
@@ -54,37 +86,5 @@ class UrlApiControllerTest {
         return ShortUrlResponse.builder()
             .shortUrl("http://localhost:8080/B")
             .build();
-    }
-
-    @DisplayName("올바른 형태의 URL 요청시 정상적으로 Short URL을 반환한다.")
-    @Test
-    void successConversionUrl() throws Exception {
-        UrlConvertingRequest requestDto = createRequestDto();
-        ShortUrlResponse shortUrlResponse = createResponseDto();
-        given(urlService.getConvertingUrl(any())).willReturn(shortUrlResponse);
-
-        ResultActions resultActions = mockMvc.perform(post("/url-convert")
-            .contentType(MediaType.APPLICATION_JSON)
-            .content(objectMapper.writeValueAsString(requestDto)))
-            .andDo(print());
-
-        resultActions
-            .andExpect(jsonPath("$.shortUrl").value(shortUrlResponse.getShortUrl()))
-            .andExpect(status().isOk());
-    }
-
-    @DisplayName("잘못된 형태의 URL 요청시 400코드와 에러 메시지를 반환한다.")
-    @Test
-    void failureConversionUrl() throws Exception {
-        UrlConvertingRequest requestDto = createRequestDtoInvalidUrl();
-
-        ResultActions resultActions = mockMvc.perform(post("/url-convert")
-            .contentType(MediaType.APPLICATION_JSON)
-            .content(objectMapper.writeValueAsString(requestDto)))
-            .andDo(print());
-
-        resultActions
-            .andExpect(status().isBadRequest())
-            .andExpect(content().string("http 또는 https를 포함한 올바른 형태의 URL을 입력해주세요."));
     }
 }
