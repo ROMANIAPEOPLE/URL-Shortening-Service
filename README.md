@@ -25,7 +25,7 @@
 
 ![환경변수](https://user-images.githubusercontent.com/39195377/118670553-aff66180-b831-11eb-934a-7dc5dd9ffb55.PNG)
 
-만약 환경변수 설정이 되어있지 않다면 아래 명령어들을 차례로 입력해 환경변수 설정을 완료합니다.
+만약 환경변수 설정이 되어있지 않다면 아래 명령어들로 환경변수 설정을 완료합니다.
 
 ```bash
 # readlink -f /usr/bin/javac
