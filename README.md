@@ -15,6 +15,42 @@
 ```bash
 # sudo yum install java-1.8.0-openjdk-devel
 ```
+-----
+
+아래 명령어를 통해 환경변수 설정을 확인합니다.
+
+```bash
+# echo $JAVA_HOME
+```
+
+![환경변수](https://user-images.githubusercontent.com/39195377/118670553-aff66180-b831-11eb-934a-7dc5dd9ffb55.PNG)
+
+만약 환경변수 설정이 되어있지 않다면 아래 명령어들을 차례로 입력해 환경변수 설정을 완료합니다.
+
+```bash
+# readlink -f /usr/bin/javac
+```
+
+![환경변수 설정](https://user-images.githubusercontent.com/39195377/118670552-aec53480-b831-11eb-88cb-149ba2d89bf2.PNG)
+
+```bash
+# vim /etc/profile
+```
+
+vim 편집기를 열어 아래와 같이 환경변수를 입력&수정합니다.
+
+```bash
+export /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.292.b10-1.el7_9.x86_64
+```
+
+![환경변수 export](https://user-images.githubusercontent.com/39195377/118670557-aff66180-b831-11eb-9f99-055c3902d52b.PNG)
+
+마지막으로 아래 명령어를 입력해 변경한 환경변수를 적용합니다.
+
+```bash
+# source /etc/profile
+```
+
 
 
 
