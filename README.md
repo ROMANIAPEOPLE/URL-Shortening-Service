@@ -1,5 +1,3 @@
-##  **URL Shortening Service**
-
 ### 💻 BUILD PROJECT BY LINUX (서버 환경 : centos-7.3-64)
 
 #### 1. JDK 1.8 설치 여부 확인
@@ -100,7 +98,10 @@ java -jar task-0.0.1-SNAPSHOT.jar
 http://localhost:8080/
 ```
 
----
+
+
+
+# PROJECT INFO
 
 ### ✍️TECHNOLOGY 
 
