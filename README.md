@@ -203,6 +203,8 @@ kill -15 위에서 찾은 PID
 
 ##### 3. MethodArgumentNotValidException : 잘못된 형태의 URL 입력시 발생합니다. (status code : 400)
 
+##### 4. 그 외 모든 예외는 status code 500과 "예상치 못한 에러" 메시지를 반환합니다.
+
 ---
 
 ### ✍️ URL INTEGRATION RULES
