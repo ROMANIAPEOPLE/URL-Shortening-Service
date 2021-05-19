@@ -197,7 +197,7 @@ kill -15 위에서 찾은 PID
 
 ### ✍️ EXCPETION HANDLING
 
-##### 1. OutOfUrlMeMemoryException : 저장된 URL의 개수가 218340105584895개를 초과하면 발생합니다. (status code : 500)
+##### 1. OutOfUrlMemoryException : 저장된 URL의 개수가 218340105584895개를 초과하면 발생합니다. (status code : 500)
 
 ##### 2. UrlNotFoundException : 서버 내 오류로 인해 저장된 URL 검색 실패시 발생합니다. (status code : 500)
 
